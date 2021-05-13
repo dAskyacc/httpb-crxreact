@@ -5,5 +5,44 @@
   "main": "index.js",
   "author": "lanebur",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "scripts": {
+    "dev": "",
+    "lint": "prettier --write **/*.{js,jsx,css,html}"
+  },
+  "dependencies": {
+    "@hot-loader/react-dom": "^17.0.1",
+    "@types/chrome": "^0.0.139",
+    "@types/react": "^17.0.5",
+    "@types/react-dom": "^17.0.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hot-loader": "^4.13.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.2",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-preset-react-app": "^10.0.0",
+    "css-loader": "^5.2.4",
+    "dart-sass": "^1.25.0",
+    "eslint": "^7.26.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-flowtype": "^5.7.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "fs-extra": "^10.0.0",
+    "html-webpack-plugin": "^5.3.1",
+    "prettier": "^2.3.0",
+    "resolve-url-loader": "^4.0.0",
+    "sass-loader": "^11.1.0",
+    "source-map-loader": "^2.0.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.37.0"
+  }
 }
