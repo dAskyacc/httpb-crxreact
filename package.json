@@ -1,0 +1,9 @@
+{
+  "name": "httpb-react-ext",
+  "version": "2.0.0",
+  "description": "BAS Chain httpb extension",
+  "main": "index.js",
+  "author": "lanebur",
+  "license": "MIT",
+  "private": false
+}
