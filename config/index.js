@@ -11,6 +11,13 @@ let localeEnv = {
 };
 
 !process.env.NODE_ENV && (process.env.NODE_ENV = 'development');
+
+const prodMode = process.env.NODE_ENV === 'production';
+
+// production mode will set env.git verion
+if (prodMode) {
+}
+
 const localeEnvPath = `./.env.${process.env.NODE_ENV}.js`;
 if (fs.existsSync(localeEnvPath)) {
   localeEnv = require(localeEnvPath);
@@ -29,7 +36,9 @@ const mixinProperty = (key, defaultValue = '') => {
 
 let envWarpper = Object.assign({}, secretsEnv, localeEnv, {
   APP_NAME: mixinProperty('APP_NAME', pkgJson.name),
+  APP_VERSION: mixinProperty('APP_VERSION', pkgJson.version),
   APP_AUHTOR: mixinProperty('APP_AUTHOR', pkgJson.author),
+  prodMode: prodMode,
 });
 
 module.exports = envWarpper;

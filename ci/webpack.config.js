@@ -1,17 +1,24 @@
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const fs = require('fs-extra');
 
-const { R, join, src, dist } = require('./paths');
-const { fileExtensions } = require('./utils');
+const { context, R, join, src, dist } = require('./paths');
+const { fileExtensions, entryInfo } = require('./utils');
+
+const warpperEnv = require('../config');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
+const targetBrowser = warpperEnv.TARGET_BROWSER || 'chrome';
 
-const TARGET_BS = process.env.TARGET_BROWSER || 'chrome';
 /**
  *
  */
 var alias = {
+  BaseSrc: src,
+  Lib: R(src, 'libs'),
+  Assets: R(src, 'assets'),
   'react-dom': '@hot-loader/react-dom',
 };
 const NODE_MODE = process.env.NODE_ENV || 'development';
@@ -21,19 +28,55 @@ if (fs.existsSync(secretsPath)) {
   alias['localenv'] = secretsPath;
 }
 
+const copyPlugins = [
+  // manifest
+  new CopyWebpackPlugin({
+    patterns: [
+      {
+        from: R(src, 'manifest.json'),
+        to: R(dist, targetBrowser),
+        force: true,
+        transform: function (content, path) {
+          console.log(warpperEnv.APP_VERSION);
+          return Buffer.from(
+            JSON.stringify({
+              version: warpperEnv.APP_VERSION,
+              ...JSON.parse(content.toString()),
+            })
+          );
+        },
+      },
+    ],
+  }),
+  new CopyWebpackPlugin({
+    patterns: [
+      {
+        from: R(src, 'assets/icons'),
+        to: R(dist, targetBrowser, 'icons'),
+        force: true,
+      },
+    ],
+  }),
+];
+
+const htmlPlugins = [
+  new HtmlWebpackPlugin({
+    template: R(src, 'pages', 'Popup', 'index.html'),
+    filename: 'popup.html',
+    chunks: ['popup'],
+    cache: false,
+    inject: 'body',
+  }),
+];
+
 var options = {
+  context: context,
   mode: NODE_MODE,
-  entry: {
-    devtools: R(src, 'pages', 'Devtools', 'index.js'),
-    background: R(src, 'pages', 'Background', 'index.js'),
-    contentScript: R(src, 'pages', 'Content', 'index.js'),
-    popup: R(src, 'pages', 'Popup', 'index.jsx'),
-  },
-  chromeExtensionBoilerplate: {
-    notHotReload: ['contentScript', 'devtools'],
-  },
+  entry: entryInfo.entry,
   output: {
-    path: R(dist, TARGET_BS),
+    path: R(dist, targetBrowser),
+    clean: true,
+    pathinfo: true,
     filename: '[name].bundle.js',
     publicPath: ASSET_PATH,
   },
@@ -59,7 +102,7 @@ var options = {
       },
       {
         test: new RegExp('.(' + fileExtensions.join('|') + ')$'),
-        loader: 'file-loader',
+        loader: 'url-loader',
         options: {
           name: '[name].[ext]',
         },
@@ -102,7 +145,19 @@ var options = {
       verbose: true,
       cleanStyleWebpackAssets: true, // Automatically remove all unused webpack assets on rebuild
     }),
+    new webpack.EnvironmentPlugin(['NODE_ENV']),
+    ...copyPlugins,
+    ...htmlPlugins,
   ],
 };
+
+if (warpperEnv.NODE_ENV === 'development') {
+  options.devtool = 'cheap-module-source-map';
+} else {
+  options.optimization = {
+    minimize: false,
+    minimizer: [],
+  };
+}
 
 module.exports = options;

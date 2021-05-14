@@ -4,6 +4,7 @@ const R = (...p) => path.resolve(__dirname, '../', ...p);
 const join = (...p) => path.join(...p);
 
 module.exports = {
+  context: path.resolve(__dirname, '../'),
   R,
   join,
   src: path.resolve(__dirname, '../src'),

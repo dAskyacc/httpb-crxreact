@@ -7,7 +7,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "",
+    "dev": "cross-env NODE_ENV=development webpack -c ./ci/webpack.config.js",
+    "serve": "lite-server -c ci/bs-config.js",
     "lint": "prettier --write **/*.{js,jsx,css,html}"
   },
   "dependencies": {
@@ -28,6 +29,7 @@
     "babel-loader": "^8.2.2",
     "babel-preset-react-app": "^10.0.0",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "copy-webpack-plugin": "^8.1.1",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.4",
     "dart-sass": "^1.25.0",
@@ -38,13 +40,20 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "file-loader": "^6.2.0",
     "fs-extra": "^10.0.0",
+    "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.1",
+    "http-proxy-middleware": "^2.0.0",
+    "lite-server": "^2.6.1",
     "prettier": "^2.3.0",
     "resolve-url-loader": "^4.0.0",
     "sass-loader": "^11.1.0",
     "source-map-loader": "^2.0.1",
     "style-loader": "^2.0.0",
-    "webpack": "^5.37.0"
+    "url-loader": "^4.1.1",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }
