@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const fs = require('fs-extra');
 
 const { R, join, src, dist } = require('./paths');
@@ -99,7 +100,7 @@ var options = {
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin({
       verbose: true,
-      cleanStyleWebpackAssets: true,
+      cleanStyleWebpackAssets: true, // Automatically remove all unused webpack assets on rebuild
     }),
   ],
 };
