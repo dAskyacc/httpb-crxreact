@@ -37,11 +37,11 @@ const copyPlugins = [
         to: R(dist, targetBrowser),
         force: true,
         transform: function (content, path) {
-          console.log(warpperEnv.APP_VERSION);
+          console.log('>>>>>>>>>>>>>>>>>', warpperEnv.APP_VERSION);
           return Buffer.from(
             JSON.stringify({
-              version: warpperEnv.APP_VERSION,
               ...JSON.parse(content.toString()),
+              version: warpperEnv.APP_VERSION,
             })
           );
         },
