@@ -39,10 +39,14 @@ const copyPlugins = [
         transform: function (content, path) {
           console.log('>>>>>>>>>>>>>>>>>', warpperEnv.APP_VERSION);
           return Buffer.from(
-            JSON.stringify({
-              ...JSON.parse(content.toString()),
-              version: warpperEnv.APP_VERSION,
-            })
+            JSON.stringify(
+              {
+                ...JSON.parse(content.toString()),
+                version: warpperEnv.APP_VERSION,
+              },
+              null,
+              2
+            )
           );
         },
       },
@@ -63,14 +67,14 @@ const htmlPlugins = [
   new HtmlWebpackPlugin({
     template: R(src, 'pages', 'Popup', 'index.html'),
     filename: 'popup.html',
-    chunks: ['popup'],
+    chunks: ['popup/popup'],
     cache: false,
     inject: 'body',
   }),
   new HtmlWebpackPlugin({
     template: R(src, 'pages', 'Options', 'index.html'),
     filename: 'options.html',
-    chunks: ['options'],
+    chunks: ['options/options'],
     cache: false,
     inject: 'body',
   }),
@@ -158,13 +162,13 @@ var options = {
   ],
 };
 
-if (warpperEnv.NODE_ENV === 'development') {
-  options.devtool = 'cheap-module-source-map';
-} else {
-  options.optimization = {
-    minimize: false,
-    minimizer: [],
-  };
-}
+// if (warpperEnv.NODE_ENV === 'development') {
+//   options.devtool = 'cheap-module-source-map';
+// } else {
+//   options.optimization = {
+//     minimize: false,
+//     minimizer: [],
+//   };
+// }
 
 module.exports = options;

@@ -3,6 +3,7 @@
  */
 const { webpack } = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
+const chalk = require('chalk');
 
 const DEV_ENV_VALT = 'development';
 
@@ -26,15 +27,20 @@ let excludeEntriesToHotReload = entryInfo.notHotReload || [];
 for (var entryName in config.entry) {
   if (excludeEntriesToHotReload.indexOf(entryName) === -1) {
     let _tmpEntry = config.entry[entryName];
-    if (typeof _tmpEntry === 'string') {
-      config.entry[entryName] = [
-        'webpack-dev-server/client?http://localhost:' + DEV_PORT,
-        'webpack/hot/dev-server',
-      ].concat(_tmpEntry);
-    } else {
-      console.log('_tmpEntry>>>', _tmpEntry);
-    }
+    // if (typeof _tmpEntry === 'string') {
+    config.entry[entryName] = [
+      'webpack-dev-server/client?http://localhost:' + DEV_PORT,
+      'webpack/hot/dev-server',
+    ].concat(_tmpEntry);
+    // } else {
+    //   // console.log('_tmpEntry>>>', _tmpEntry);
+    // }
   }
+}
+console.log('Entries :\n ', chalk.magentaBright(JSON.stringify(config.entry, null, 2)));
+
+if (process.env.NODE_ENV === 'development') {
+  config.devtool = 'cheap-module-source-map';
 }
 
 // config.plugins = [new webpack.HotModuleReplacementPlugin()].concat(config.plugins || []);
@@ -42,7 +48,7 @@ const hmrOpts = {
   contentBase: join(__dirname, 'dist', TARGET_BROWSER),
   port: DEV_PORT,
   hot: true,
-  open: true,
+  open: false,
   // openPage: ['options/options.html'],
   injectClient: false,
   writeToDisk: true,
@@ -65,4 +71,6 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
   module.hot.accept();
 }
 
-server.listen(DEV_PORT);
+server.listen(DEV_PORT, 'localhost', () => {
+  console.log('dev Server listening on port:' + DEV_PORT);
+});
