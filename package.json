@@ -8,6 +8,7 @@
   "private": false,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack -c ./ci/webpack.config.js",
+    "build": "cross-env TARGET_BROWSER=firefox node ci/webserver.js",
     "serve": "lite-server -c ci/bs-config.js",
     "lint": "prettier --write **/*.{js,jsx,css,html}"
   },
@@ -28,6 +29,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-preset-react-app": "^10.0.0",
+    "chalk": "^4.1.1",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "copy-webpack-plugin": "^8.1.1",
     "cross-env": "^7.0.3",
@@ -51,6 +53,8 @@
     "sass-loader": "^11.1.0",
     "source-map-loader": "^2.0.1",
     "style-loader": "^2.0.0",
+    "ts-loader": "^9.1.2",
+    "typescript": "^4.2.4",
     "url-loader": "^4.1.1",
     "webpack": "^5.37.0",
     "webpack-cli": "^4.7.0",

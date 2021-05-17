@@ -12,6 +12,10 @@ const entryInfo = {
       import: R(src, 'pages', 'Popup', 'index.jsx'),
       filename: 'popup/popup.bundle.js',
     },
+    options: {
+      import: R(src, 'pages', 'Options', 'index.jsx'),
+      filename: 'options/options.bundle.js',
+    },
   },
 };
 

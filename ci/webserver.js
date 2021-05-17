@@ -40,7 +40,10 @@ for (var entryName in config.entry) {
 // config.plugins = [new webpack.HotModuleReplacementPlugin()].concat(config.plugins || []);
 const hmrOpts = {
   contentBase: join(__dirname, 'dist', TARGET_BROWSER),
+  port: DEV_PORT,
   hot: true,
+  open: true,
+  // openPage: ['options/options.html'],
   injectClient: false,
   writeToDisk: true,
   publicPath: `http://localhost:${DEV_PORT}`,
@@ -48,6 +51,10 @@ const hmrOpts = {
     'Access-Control-Allow-Origin': '*',
   },
   disableHostCheck: true,
+  onListening: function (server) {
+    const port = server.listeningApp.address.port;
+    console.log(port, '>>>>>>', server.listeningApp);
+  },
 };
 WebpackDevServer.addDevServerEntrypoints(config, options);
 

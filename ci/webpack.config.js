@@ -67,6 +67,13 @@ const htmlPlugins = [
     cache: false,
     inject: 'body',
   }),
+  new HtmlWebpackPlugin({
+    template: R(src, 'pages', 'Options', 'index.html'),
+    filename: 'options.html',
+    chunks: ['options'],
+    cache: false,
+    inject: 'body',
+  }),
 ];
 
 var options = {
