@@ -26,6 +26,27 @@ if (fs.existsSync(distTarget)) {
 
 const styleRules = [
   {
+    test: /antd.*\.less$/,
+    use: [
+      'style-loader',
+      'css-loader',
+      {
+        loader: 'postcss-loader',
+        options: {
+          config: {
+            path: './',
+          },
+        },
+      },
+      {
+        loader: 'less-loader',
+        options: {
+          javascriptEnabled: true,
+        },
+      },
+    ],
+  },
+  {
     test: /\.(sa|sc|c)ss$/,
     use: [
       {
@@ -80,6 +101,7 @@ if (process.env.NODE_ENV === 'development') {
     // colors: '\u001b[32m',
     // entrypoints: 'auto',
     errors: true,
+    errorDetails: true,
   };
   // config.plugins = (config.plugins || []).concat([
   //   new webpack.HotModuleReplacementPlugin(),

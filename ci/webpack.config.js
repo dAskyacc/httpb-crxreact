@@ -39,7 +39,7 @@ const copyPlugins = [
         to: R(dist, targetBrowser),
         force: true,
         transform: function (content, path) {
-          console.log('>>>>>>>>>>>>>>>>>', warpperEnv.APP_VERSION);
+          // console.log('>>>>>>>>>>>>>>>>>', warpperEnv.APP_VERSION);
           return Buffer.from(
             JSON.stringify(
               {
@@ -95,30 +95,6 @@ var options = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.(sa|sc|c)ss$/,
-      //   use: [
-      //     {
-      //       loader: 'style-loader', // js css 生成style节点
-      //     },
-      //     {
-      //       loader: 'css-loader', // 将CSS转化成ComminJS模块
-      //     },
-      //     {
-      //       loader: 'resolve-url-loader', // 置于 loader 链中的 sass-loader 之前，就可以重写 url ,解决url()
-      //     },
-      //     {
-      //       loader: 'sass-loader', //将Sass 编译成CSS
-      //       options: {
-      //         sourceMap: true,
-      //         implementation: require('sass'),
-      //         sassOptions: {
-      //           fiber: require('fibers'),
-      //         },
-      //       },
-      //     },
-      //   ],
-      // },
       {
         test: new RegExp('.(' + fileExtensions.join('|') + ')$'),
         loader: 'url-loader',
@@ -134,8 +110,9 @@ var options = {
       },
       {
         test: /\.(ts|tsx)$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
+        // loader: 'ts-loader',
+        use: ['ts-loader', 'babel-loader'], // 按需加载
+        // exclude: /node_modules/,
       },
 
       {
