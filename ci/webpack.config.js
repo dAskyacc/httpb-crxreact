@@ -8,6 +8,8 @@ const { context, R, join, src, dist } = require('./paths');
 const { fileExtensions, entryInfo } = require('./utils');
 
 const warpperEnv = require('../config');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const NullWebpackPlugin = require('./null-webpack-plugin');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 const targetBrowser = warpperEnv.TARGET_BROWSER || 'chrome';
@@ -93,30 +95,30 @@ var options = {
   },
   module: {
     rules: [
-      {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          {
-            loader: 'style-loader', // js css 生成style节点
-          },
-          {
-            loader: 'css-loader', // 将CSS转化成ComminJS模块
-          },
-          {
-            loader: 'resolve-url-loader', // 置于 loader 链中的 sass-loader 之前，就可以重写 url ,解决url()
-          },
-          {
-            loader: 'sass-loader', //将Sass 编译成CSS
-            options: {
-              sourceMap: true,
-              implementation: require('sass'),
-              sassOptions: {
-                fiber: require('fibers'),
-              },
-            },
-          },
-        ],
-      },
+      // {
+      //   test: /\.(sa|sc|c)ss$/,
+      //   use: [
+      //     {
+      //       loader: 'style-loader', // js css 生成style节点
+      //     },
+      //     {
+      //       loader: 'css-loader', // 将CSS转化成ComminJS模块
+      //     },
+      //     {
+      //       loader: 'resolve-url-loader', // 置于 loader 链中的 sass-loader 之前，就可以重写 url ,解决url()
+      //     },
+      //     {
+      //       loader: 'sass-loader', //将Sass 编译成CSS
+      //       options: {
+      //         sourceMap: true,
+      //         implementation: require('sass'),
+      //         sassOptions: {
+      //           fiber: require('fibers'),
+      //         },
+      //       },
+      //     },
+      //   ],
+      // },
       {
         test: new RegExp('.(' + fileExtensions.join('|') + ')$'),
         loader: 'url-loader',
@@ -172,6 +174,9 @@ var options = {
       cleanStyleWebpackAssets: true, // Automatically remove all unused webpack assets on rebuild
     }),
     new webpack.EnvironmentPlugin(['NODE_ENV']),
+    process.env.NODE_ENV === 'production'
+      ? new MiniCssExtractPlugin()
+      : new NullWebpackPlugin(),
     ...copyPlugins,
     ...htmlPlugins,
   ],
