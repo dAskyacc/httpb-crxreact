@@ -19,7 +19,6 @@ const { DEV_PORT, TARGET_BROWSER } = require('../config');
 
 var config = require('./webpack.config');
 const { join } = require('./paths');
-const options = require('./webpack.config');
 
 let excludeEntriesToHotReload = entryInfo.notHotReload || [];
 
@@ -37,10 +36,19 @@ for (var entryName in config.entry) {
     // }
   }
 }
-console.log('Entries :\n ', chalk.magentaBright(JSON.stringify(config.entry, null, 2)));
+if (process.env.DEBUG_CONFIG) {
+  console.log(
+    'Entries :\n ',
+    chalk.magentaBright(JSON.stringify(config.entry, null, 2))
+  );
+}
 
 if (process.env.NODE_ENV === 'development') {
   config.devtool = 'cheap-module-source-map';
+
+  // config.plugins = (config.plugins || []).concat([
+  //   new webpack.HotModuleReplacementPlugin(),
+  // ]);
 }
 
 // config.plugins = [new webpack.HotModuleReplacementPlugin()].concat(config.plugins || []);
@@ -57,12 +65,9 @@ const hmrOpts = {
     'Access-Control-Allow-Origin': '*',
   },
   disableHostCheck: true,
-  onListening: function (server) {
-    const port = server.listeningApp.address.port;
-    console.log(port, '>>>>>>', server.listeningApp);
-  },
 };
-WebpackDevServer.addDevServerEntrypoints(config, options);
+
+WebpackDevServer.addDevServerEntrypoints(config, hmrOpts);
 
 var compiler = webpack(config);
 const server = new WebpackDevServer(compiler, hmrOpts);
