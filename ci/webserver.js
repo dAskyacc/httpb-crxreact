@@ -4,6 +4,7 @@
 const { webpack } = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const chalk = require('chalk');
+const fs = require('fs-extra');
 
 const DEV_ENV_VALT = 'development';
 
@@ -12,13 +13,18 @@ process.env.NODE_ENV = DEV_ENV_VALT;
 
 const { entryInfo } = require('./utils');
 const { DEV_PORT, TARGET_BROWSER } = require('../config');
+const { join, dist } = require('./paths');
 
 //  // chromeExtensionBoilerplate: {
 //   notHotReload: [],
 // },
 
+const distTarget = join(dist, TARGET_BROWSER);
+if (fs.existsSync(distTarget)) {
+  fs.removeSync(distTarget);
+}
+
 var config = require('./webpack.config');
-const { join } = require('./paths');
 
 let excludeEntriesToHotReload = entryInfo.notHotReload || [];
 
@@ -26,14 +32,10 @@ let excludeEntriesToHotReload = entryInfo.notHotReload || [];
 for (var entryName in config.entry) {
   if (excludeEntriesToHotReload.indexOf(entryName) === -1) {
     let _tmpEntry = config.entry[entryName];
-    // if (typeof _tmpEntry === 'string') {
     config.entry[entryName] = [
       'webpack-dev-server/client?http://localhost:' + DEV_PORT,
       'webpack/hot/dev-server',
     ].concat(_tmpEntry);
-    // } else {
-    //   // console.log('_tmpEntry>>>', _tmpEntry);
-    // }
   }
 }
 if (process.env.DEBUG_CONFIG) {
@@ -46,6 +48,11 @@ if (process.env.DEBUG_CONFIG) {
 if (process.env.NODE_ENV === 'development') {
   config.devtool = 'cheap-module-source-map';
 
+  config.stats = {
+    // colors: '\u001b[32m',
+    // entrypoints: 'auto',
+    errors: true,
+  };
   // config.plugins = (config.plugins || []).concat([
   //   new webpack.HotModuleReplacementPlugin(),
   // ]);

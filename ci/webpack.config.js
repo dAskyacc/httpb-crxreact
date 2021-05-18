@@ -107,7 +107,13 @@ var options = {
           },
           {
             loader: 'sass-loader', //将Sass 编译成CSS
-            options: { sourceMap: true },
+            options: {
+              sourceMap: true,
+              implementation: require('sass'),
+              sassOptions: {
+                fiber: require('fibers'),
+              },
+            },
           },
         ],
       },
@@ -148,7 +154,16 @@ var options = {
     alias: alias,
     extensions: fileExtensions
       .map((extension) => '.' + extension)
-      .concat(['.js', '.jsx', '.ts', '.tsx', '.css', '.sass', '.scss']),
+      .concat([
+        '.js',
+        '.jsx',
+        '.ts',
+        '.tsx',
+        '.css',
+        '.sass',
+        '.scss',
+        '.less',
+      ]),
   },
   plugins: [
     new webpack.ProgressPlugin(),

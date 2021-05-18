@@ -2,6 +2,8 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 
 import logo from 'BaseSrc/assets/svgs/bas_logo.svg';
+
+
 const Popup = () => {
   return (
     <div className="App">
