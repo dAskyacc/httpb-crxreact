@@ -172,6 +172,7 @@ var options = {
     new CleanWebpackPlugin({
       verbose: true,
       cleanStyleWebpackAssets: true, // Automatically remove all unused webpack assets on rebuild
+      cleanOnceBeforeBuildPatterns: [],
     }),
     new webpack.EnvironmentPlugin(['NODE_ENV']),
     process.env.NODE_ENV === 'production'

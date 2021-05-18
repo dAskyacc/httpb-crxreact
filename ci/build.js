@@ -33,7 +33,6 @@ const styleRules = [
   },
 ];
 
-
 // config
 var config = require('./webpack.config');
 
