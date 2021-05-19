@@ -21,6 +21,8 @@ var alias = {
   BaseSrc: src,
   Lib: R(src, 'libs'),
   Assets: R(src, 'assets'),
+  Styles: join(src, 'Styles'),
+  UI: join(src, 'UI'),
   'react-dom': '@hot-loader/react-dom',
 };
 const NODE_MODE = process.env.NODE_ENV || 'development';

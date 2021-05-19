@@ -90,4 +90,18 @@ render(
 
 ---
 
-##
+## Redux CI
+
+> Redux@4.x + redux-thunk@2.x
+
+```bash
+yarn add redux redux-thunk react-redux
+
+```
+
+> redux store 数据状态管理核心库, reducer (触发会返回新的store 替换old store),actions (通过action 调用reducer,类似vue store的mutations)
+
+> react-redux 用来简化在React中使用Redux的流程.Provider/connect 
+
+> redux-thunk: 扩展redux的 action 可以以函数方式作为参数调用和 异步调用
+
