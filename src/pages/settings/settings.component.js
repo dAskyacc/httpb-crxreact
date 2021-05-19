@@ -10,7 +10,7 @@ class SettingsPage extends PureComponent {
     const { currentPath } = this.props;
     return (
       <div className="main-container">
-        <div className="settings-page__header">ejrjer</div>
+        <div className="settings-page__header">{currentPath}</div>
       </div>
     );
   }
