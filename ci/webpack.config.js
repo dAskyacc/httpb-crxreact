@@ -111,7 +111,7 @@ var options = {
       {
         test: /\.(ts|tsx)$/,
         // loader: 'ts-loader',
-        use: ['ts-loader', 'babel-loader'], // 按需加载
+        use: ['react-hot-loader/webpack', 'babel-loader'], // 按需加载
         // exclude: /node_modules/,
       },
 

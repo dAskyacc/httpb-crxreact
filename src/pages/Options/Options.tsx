@@ -4,6 +4,8 @@ import { Layout, Button } from 'antd';
 
 const { Header, Content, Footer } = Layout;
 
+import { HeartTwoTone } from '@ant-design/icons';
+
 interface Props {
   title: string;
 }
@@ -19,6 +21,7 @@ const Options: React.FC<Props> = ({ title }: Props) => {
       </Header>
       <Content style={{ padding: '0 24px' }}>
         <div>Helllsldlsldl</div>
+        <HeartTwoTone twoToneColor="#eb2f96" />
       </Content>
       <Footer style={{ textAlign: 'center' }}>Lanbery UI DSH</Footer>
     </Layout>

@@ -13,6 +13,7 @@
     "lint": "prettier --write **/*.{js,jsx,css,html}"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
     "@babel/runtime-corejs3": "^7.14.0",
     "@hot-loader/react-dom": "^17.0.1",
     "@types/chrome": "^0.0.139",

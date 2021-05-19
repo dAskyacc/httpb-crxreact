@@ -1,4 +1,6 @@
 const presets = [
+  '@babel/preset-react',
+  '@babel/preset-typescript',
   [
     '@babel/preset-env',
     {
@@ -11,26 +13,37 @@ const presets = [
       debug: false, //方便调试
     },
   ],
-  '@babel/preset-react',
-  '@babel/preset-typescript',
 
   // 'react-app',
 ];
 
 const plugins = [
   '@babel/plugin-transform-runtime',
-  'react-hot-loader/babel',
   [
     'babel-plugin-import',
     {
       libraryName: 'antd',
       libraryDirectory: 'es',
-      style: function (name) {
-        console.log('$$$>>>>>>>>>>>>>>>>>>>>>>antd less name', name);
+      style: function (name, file) {
+        console.log('Antd loader Importor>>>>>>>>>>>>>>>>>>>>>>', name);
         return `${name}/style/index.css`;
       },
     },
   ],
+  [
+    'import',
+    {
+      libraryName: '@ant-design/icons',
+      libraryDirectory: 'lib/icons',
+      camel2DashComponentName: false,
+      // style: function (name,file) {
+      //   console.log('Antd Icons>>>>>>', name,file);
+      //   return `${name}/style/index.css`;
+      // },
+    },
+    '@ant-design/icons',
+  ],
+  'react-hot-loader/babel',
 ];
 
 module.exports = { presets, plugins };
