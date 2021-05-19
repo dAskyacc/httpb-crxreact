@@ -34,12 +34,16 @@ const plugins = [
     'import',
     {
       libraryName: '@ant-design/icons',
-      libraryDirectory: 'lib/icons',
+      // libraryDirectory: 'lib/icons',
       camel2DashComponentName: false,
-      // style: function (name,file) {
-      //   console.log('Antd Icons>>>>>>', name,file);
-      //   return `${name}/style/index.css`;
-      // },
+      customName: function (transformedMethodName) {
+        console.log('Antd Icons>>>>>>', transformedMethodName);
+        if (transformedMethodName === 'default') {
+          return '@ant-design/icons/es/components/Icon';
+        } else {
+          return `@ant-design/icons/es/icons/${transformedMethodName}`;
+        }
+      },
     },
     '@ant-design/icons',
   ],
