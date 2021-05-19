@@ -10,6 +10,27 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const styleRules = [
   {
+    test: /antd.*\.less$/,
+    use: [
+      MiniCssExtractPlugin.loader,
+      'css-loader',
+      {
+        loader: 'postcss-loader',
+        options: {
+          config: {
+            path: './',
+          },
+        },
+      },
+      {
+        loader: 'less-loader',
+        options: {
+          javascriptEnabled: true,
+        },
+      },
+    ],
+  },
+  {
     test: /\.(sa|sc|c)ss$/,
     use: [
       MiniCssExtractPlugin.loader,

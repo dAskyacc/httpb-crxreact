@@ -18,11 +18,12 @@ const targetBrowser = warpperEnv.TARGET_BROWSER || 'chrome';
  *
  */
 var alias = {
-  BaseSrc: src,
+  '~': src,
   Lib: R(src, 'libs'),
   Assets: R(src, 'assets'),
   Styles: join(src, 'Styles'),
-  UI: join(src, 'UI'),
+  Pages: join(src, 'pages'),
+  UI: join(src, 'ui'),
   'react-dom': '@hot-loader/react-dom',
 };
 const NODE_MODE = process.env.NODE_ENV || 'development';
@@ -69,14 +70,14 @@ const copyPlugins = [
 
 const htmlPlugins = [
   new HtmlWebpackPlugin({
-    template: R(src, 'pages', 'Popup', 'index.html'),
+    template: R(src, 'Popup', 'index.html'),
     filename: 'popup.html',
     chunks: ['popup/popup'],
     cache: false,
     inject: 'body',
   }),
   new HtmlWebpackPlugin({
-    template: R(src, 'pages', 'Options', 'index.html'),
+    template: R(src, 'Options', 'index.html'),
     filename: 'options.html',
     chunks: ['options/options'],
     cache: false,

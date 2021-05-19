@@ -99,9 +99,14 @@ yarn add redux redux-thunk react-redux
 
 ```
 
-> redux store 数据状态管理核心库, reducer (触发会返回新的store 替换old store),actions (通过action 调用reducer,类似vue store的mutations)
+> redux store 数据状态管理核心库, reducer (触发会返回新的 store 替换 old store),actions (通过 action 调用 reducer,类似 vue store 的 mutations)
 
-> react-redux 用来简化在React中使用Redux的流程.Provider/connect 
+> react-redux 用来简化在 React 中使用 Redux 的流程.Provider/connect
 
-> redux-thunk: 扩展redux的 action 可以以函数方式作为参数调用和 异步调用
+> redux-thunk: 扩展 redux 的 action 可以以函数方式作为参数调用和 异步调用
+
+## prop-types CI
+
+> [类型检查器](https://github.com/facebook/prop-types)
+
 

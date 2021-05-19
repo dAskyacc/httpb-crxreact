@@ -1,7 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 
-import logo from 'BaseSrc/assets/svgs/bas_logo.svg';
+import logo from 'Assets/svgs/bas_logo.svg';
 
 import { default as Icon } from '@ant-design/icons';
 
