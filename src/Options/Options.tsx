@@ -22,6 +22,7 @@ const Options: React.FC<Props> = ({ title }: Props) => {
       <Content style={{ padding: '0 24px' }}>
         <div>Helllsldlsldl</div>
         <HeartTwoTone twoToneColor="#eb2f96" />
+        <Button type="primary">Hell</Button>
       </Content>
       <Footer style={{ textAlign: 'center' }}>Lanbery UI DSH</Footer>
     </Layout>

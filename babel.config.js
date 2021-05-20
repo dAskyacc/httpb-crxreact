@@ -24,10 +24,11 @@ const plugins = [
     {
       libraryName: 'antd',
       libraryDirectory: 'es',
-      style: function (name, file) {
-        console.log('Antd loader Importor>>>>>>>>>>>>>>>>>>>>>>', name);
-        return `${name}/style/index.css`;
-      },
+      style: true,
+      // style: function (name) {
+      //   console.log('Antd loader Importor>>>>>>>>>>>>>>>>>>>>>>', name);
+      //   return `${name}/style/index.less`;
+      // },
     },
   ],
   [
@@ -37,7 +38,7 @@ const plugins = [
       // libraryDirectory: 'lib/icons',
       camel2DashComponentName: false,
       customName: function (transformedMethodName) {
-        console.log('Antd Icons>>>>>>', transformedMethodName);
+        // console.log('Antd Icons>>>>>>', transformedMethodName);
         if (transformedMethodName === 'default') {
           return '@ant-design/icons/es/components/Icon';
         } else {

@@ -3,7 +3,6 @@ process.env.NODE_ENV = 'production';
 
 const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const { envRulesHandler } = require('./style-helper');
 

@@ -4,18 +4,24 @@ const antdLessRule = {
   test: /antd.*\.less$/,
   use: [
     'css-loader',
-    {
-      loader: 'postcss-loader',
-      options: {
-        config: {
-          path: './',
-        },
-      },
-    },
+    // {
+    //   loader: 'postcss-loader',
+    //   options: {
+    //     config: {
+    //       path: './',
+    //     },
+    //   },
+    // },
     {
       loader: 'less-loader',
       options: {
-        javascriptEnabled: true,
+        lessOptions: {
+          modifyVars: {
+            'primary-color': '#1DA57A',
+            'border-radius-base': '2px',
+          },
+          javascriptEnabled: true,
+        },
       },
     },
   ],
