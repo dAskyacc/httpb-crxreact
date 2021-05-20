@@ -1,8 +1,26 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const isDev = process.env.NODE_ENV === 'development';
-
-let styleRule = {
+const antdLessRule = {
+  test: /antd.*\.less$/,
+  use: [
+    'css-loader',
+    {
+      loader: 'postcss-loader',
+      options: {
+        config: {
+          path: './',
+        },
+      },
+    },
+    {
+      loader: 'less-loader',
+      options: {
+        javascriptEnabled: true,
+      },
+    },
+  ],
+};
+const scssRule = {
   test: /\.(sa|sc|c)ss$/,
   use: [
     {
@@ -13,25 +31,34 @@ let styleRule = {
     },
     {
       loader: 'sass-loader', //将Sass 编译成CSS
-      options: { sourceMap: true },
+      options: {
+        sourceMap: true,
+        implementation: require('sass'),
+        sassOptions: {
+          fiber: require('fibers'),
+        },
+      },
     },
   ],
 };
 
-if (isDev) {
-  styleRule.use = [
-    {
-      loader: 'style-loader', // js css 生成style节点
-    },
-  ].concat(styleRule.use);
-} else {
-  styleRule.use = [
-    {
-      loader: MiniCssExtractPlugin.loader, //  提取css
-    },
-  ].concat(styleRule.use);
+/**
+ *
+ * @param {Object} config  webpack options
+ * @param {*} prelaoder
+ */
+function envRulesHandler(config, isDev = false) {
+  if (isDev) {
+    antdLessRule.use = ['style-loader'].concat(antdLessRule.use);
+    scssRule.use = [{ loader: 'style-loader' }].concat(scssRule.use);
+  } else {
+    antdLessRule.use = [MiniCssExtractPlugin.loader].concat(antdLessRule.use);
+    scssRule.use = [MiniCssExtractPlugin.loader].concat(scssRule.use);
+  }
+
+  config.module.rules = [antdLessRule, scssRule].concat(
+    config.module.rules || []
+  );
 }
 
-
-
-module.exports = { styleRule };
+module.exports = { envRulesHandler };

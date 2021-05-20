@@ -6,6 +6,8 @@ const WebpackDevServer = require('webpack-dev-server');
 const chalk = require('chalk');
 const fs = require('fs-extra');
 
+const { envRulesHandler } = require('./style-helper');
+
 const DEV_ENV_VALT = 'development';
 
 process.env.BABEL_ENV = DEV_ENV_VALT;
@@ -24,57 +26,12 @@ if (fs.existsSync(distTarget)) {
   fs.removeSync(distTarget);
 }
 
-const styleRules = [
-  {
-    test: /antd.*\.less$/,
-    use: [
-      'style-loader',
-      'css-loader',
-      {
-        loader: 'postcss-loader',
-        options: {
-          config: {
-            path: './',
-          },
-        },
-      },
-      {
-        loader: 'less-loader',
-        options: {
-          javascriptEnabled: true,
-        },
-      },
-    ],
-  },
-  {
-    test: /\.(sa|sc|c)ss$/,
-    use: [
-      {
-        loader: 'style-loader', // js css 生成style节点
-      },
-      {
-        loader: 'css-loader', // 将CSS转化成ComminJS模块
-      },
-      {
-        loader: 'resolve-url-loader', // 置于 loader 链中的 sass-loader 之前，就可以重写 url ,解决url()
-      },
-      {
-        loader: 'sass-loader', //将Sass 编译成CSS
-        options: {
-          sourceMap: true,
-          implementation: require('sass'),
-          sassOptions: {
-            fiber: require('fibers'),
-          },
-        },
-      },
-    ],
-  },
-];
-
 var config = require('./webpack.config');
-config.module.rules = [...styleRules].concat(config.module.rules || []);
 
+// handle env style rule
+envRulesHandler(config, true);
+
+// config.module.rules = [...styleRules].concat(config.module.rules || []);
 let excludeEntriesToHotReload = entryInfo.notHotReload || [];
 
 // handle hotreload
