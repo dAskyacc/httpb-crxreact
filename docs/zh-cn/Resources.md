@@ -94,6 +94,28 @@ render(
 
 > Redux@4.x + redux-thunk@2.x
 
+> Redux Flow
+
+1. 通过 mapStateToProps 定义将 Store state 与 dom property 关联
+2. 通过 React-redux 提供的 connect 将 store state 以及 dom 事件处理函数 与 react Component 链接.
+
+```js
+ const mapStateToProps = (state)=>{
+   products:getCartProducts(state), // getCartProducts 在reducer
+   ...
+ }
+ connect(mapStateToProps,{checkout})(CartContainer)  ; 
+ // 这样在 组件中 就可以使用 <CartContainer >
+
+const CartContainer = ({ products, total, checkout }) => (
+  <Cart
+    products={products}
+    total={total}
+    onCheckoutClicked={() => checkout(products)} />
+)
+
+```
+
 ```bash
 yarn add redux redux-thunk react-redux
 
@@ -108,5 +130,3 @@ yarn add redux redux-thunk react-redux
 ## prop-types CI
 
 > [类型检查器](https://github.com/facebook/prop-types)
-
-
