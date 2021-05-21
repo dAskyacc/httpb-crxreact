@@ -14,7 +14,7 @@
 
 ### Actions Standard
 
-**Example**
+** Action Example**
 
 ```javascript
 const GO_HOME = 'ui/app/go_home'
