@@ -20,7 +20,7 @@
 const GO_HOME = 'ui/app/go_home'
 {
     type:GO_HOME,                           // must
-    value:{                                 // Optional
+    payload:{                                 // Optional
         props:'',
     },
     error:true,                             //Optional : true 

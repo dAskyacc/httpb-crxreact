@@ -1,11 +1,16 @@
-import { SET_CURRENT_LOCALE } from './localeAction';
+import { SET_CURRENT_LOCALE } from '../../actions/ActionTypes';
+export default function reduceLocaleMessages(
+  state = {},
+  { type, payload = {} }
+) {
+  const localeMessagesState = {};
 
-export default function reduceLocaleMessage(state = {}, { type, value = {} }) {
   switch (type) {
     case SET_CURRENT_LOCALE:
       return {
+        ...localeMessagesState,
         ...state,
-        current: value.messages,
+        current: payload.messages,
       };
     default:
       return state;
