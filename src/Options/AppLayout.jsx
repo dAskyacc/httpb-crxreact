@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 
-import { Layout, Button, Icon, Image } from 'antd';
-import { MenuFoldOutlined, SettingFilled } from '@ant-design/icons';
+import { Layout, Button, Image } from 'antd';
+import { SettingFilled } from '@ant-design/icons';
 
 import BasLogo from 'UI/widgets/logo';
 // import PropTypes from 'prop-types';
@@ -40,7 +40,7 @@ class PageLayout extends PureComponent {
           <Content>
             <ErrorPage error={this.error} />
             <Button type="danger">YOK</Button>
-            <Icon component={<SettingFilled width="100px" />} />
+
             <Button type="primary" icon={<SettingFilled />} />
             <BasLogo style={{ fontSize: '2.75rem' }} />
           </Content>

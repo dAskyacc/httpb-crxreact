@@ -1,7 +1,12 @@
-@import './modules/reset';
-@import './modules/variables';
-@import './modules/utilities';
+@import './global/reset';
+@import './global/variables';
+@import './global/utilities';
+@import './global/mixin';
 
+/* Pages Css*/
+@import '../pages/pages.scss';
+
+/* Body */
 body,
 html {
   padding: 0;

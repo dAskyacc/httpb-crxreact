@@ -1,0 +1,16 @@
+.error-page {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  font-style: normal;
+  font-weight: normal;
+  height: 100%;
+
+  &__header {
+    @include H1;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    text-align: center;
+  }
+}
