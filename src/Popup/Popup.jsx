@@ -35,4 +35,4 @@ const Popup = () => {
 };
 
 // ract-hot-loader V4
-export default module.hot ? hot(module)(Popup) : Popup;
+export default hot(module)(Popup);

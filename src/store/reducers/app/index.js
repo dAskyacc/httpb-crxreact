@@ -1,4 +1,4 @@
-import { UI_OPEN_SIDEBAR, UI_CLOSE_SIDEBAR } from '../../actions/ActionTypes';
+import { UI_OPEN_SIDEBAR, UI_CLOSE_SIDEBAR } from '../../ActionTypes';
 
 export default function reduceApp(state = {}, action) {
   const appState = {

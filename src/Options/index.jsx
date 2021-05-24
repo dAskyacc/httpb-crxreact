@@ -3,8 +3,11 @@ import { render } from 'react-dom';
 
 import './index.scss';
 
-import Options from './options.component';
+import RootContainer from './RootContainer';
 
-render(<Options title={'Settings'} />, document.getElementById('AppRoot'));
-
-if (!!module && module.hot) module.hot.accept();
+render(
+  <React.StrictMode>
+    <RootContainer />
+  </React.StrictMode>,
+  document.getElementById('AppRoot')
+);

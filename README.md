@@ -21,6 +21,7 @@
      ┟── Popup                                                  [extension popup entry]
      ┟── Styles                                                 [Global stylesheet directory]
      ┟── pages                                                  [Pages: Options,Popup react components ] 
+     ┟── store                                                  [redux+thunk]
      ┟── lib
      ┟── ui
      ┕── manifest.json                                          [extension]                    
@@ -43,3 +44,15 @@ import xxx from 'Lib/xxx';
 ```
 
 ---
+
+### Theme customize
+
+
+edit ci/themes/index.js
+```js
+  '@primary-color': '#0070cc',
+  '@success-color': '#1e8e3e',
+  '@info-color': '@primary-color',
+  '@warning-color': '#ffc440',
+  '@error-color': '#d93026',
+```

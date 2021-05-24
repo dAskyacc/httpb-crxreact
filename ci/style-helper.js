@@ -1,4 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { compactThemeSingle } = require('antd/dist/theme');
+const themeVars = require('./themes');
 
 const antdLessRule = {
   test: /antd.*\.less$/,
@@ -17,8 +19,8 @@ const antdLessRule = {
       options: {
         lessOptions: {
           modifyVars: {
-            'primary-color': '#1DA57A',
-            'border-radius-base': '2px',
+            ...compactThemeSingle,
+            ...themeVars,
           },
           javascriptEnabled: true,
         },

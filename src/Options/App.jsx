@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
-// import PropTypes from 'prop-types';
 
 import ErrorPage from 'Pages/error';
 
-class OptionsIndex extends PureComponent {
+class App extends PureComponent {
   state = {};
+
   error = {
     title: 'Options Error',
     message: 'OOOp fuck!!!!',
@@ -19,4 +19,4 @@ class OptionsIndex extends PureComponent {
   }
 }
 
-export default OptionsIndex;
+export default App;

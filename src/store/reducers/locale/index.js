@@ -1,8 +1,11 @@
-import { SET_CURRENT_LOCALE } from '../../actions/ActionTypes';
+import { SET_CURRENT_LOCALE, SET_I18N_KEY } from '../../ActionTypes';
 export default function reduceLocaleMessages(
   state = {},
   { type, payload = {} }
 ) {
+  /**
+   * current
+   */
   const localeMessagesState = {};
 
   switch (type) {
@@ -11,6 +14,12 @@ export default function reduceLocaleMessages(
         ...localeMessagesState,
         ...state,
         current: payload.messages,
+      };
+    case SET_I18N_KEY:
+      return {
+        ...localeMessagesState,
+        ...state,
+        i18nKey: payload.i18nKey,
       };
     default:
       return state;
