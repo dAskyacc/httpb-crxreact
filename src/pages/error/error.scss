@@ -13,4 +13,18 @@
     padding: 10px 0;
     text-align: center;
   }
+
+  &__subheader {
+    @include H4;
+    text-align: center;
+  }
+
+  &__details {
+    @include H4;
+
+    overflow-y: auto;
+    width: 100%;
+    max-width: 720px;
+    padding-top: 10px;
+  }
 }

@@ -1,31 +1,24 @@
-import { UI_OPEN_SIDEBAR, UI_CLOSE_SIDEBAR } from '../../ActionTypes';
+import { APP_LOCK, APP_UNLOCK } from '../../CoreActionTypes';
 
 export default function reduceApp(state = {}, action) {
   const appState = {
-    sidebar: {
-      isOpen: false,
-      props: {},
-    },
+    isUnlocked: false,
     ...state,
   };
 
   const { type, payload = {} } = action;
   switch (type) {
-    case UI_OPEN_SIDEBAR:
+    case APP_LOCK:
       return {
         ...appState,
-        sidebar: {
-          ...payload,
-          isOpen: true,
-        },
+        ...payload,
+        isUnlocked: false,
       };
-    case UI_CLOSE_SIDEBAR:
+    case APP_UNLOCK:
       return {
         ...appState,
-        sidebar: {
-          ...payload,
-          isOpen: true,
-        },
+        ...payload,
+        isUnlocked: true,
       };
     default:
       return appState;

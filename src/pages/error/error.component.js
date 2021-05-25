@@ -25,9 +25,8 @@ class ErrorPage extends PureComponent {
         <h2 className="error-page__subheader">{message}</h2>
 
         <section className="error-page__details">
-          <details>
-            {this.renderErrorDetail(message)}
-          </details>
+          <details>{this.renderErrorDetail(message)}</details>
+          <ul></ul>
         </section>
       </section>
     );

@@ -1,4 +1,4 @@
-import { SET_CURRENT_LOCALE, SET_I18N_KEY } from '../../ActionTypes';
+import { SET_CURRENT_LOCALE, SET_I18N_KEY } from '../../CoreActionTypes';
 export default function reduceLocaleMessages(
   state = {},
   { type, payload = {} }
