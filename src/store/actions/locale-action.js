@@ -1,4 +1,4 @@
-import { SET_CURRENT_LOCALE } from '../ActionTypes';
+import { SET_CURRENT_LOCALE } from '../core-acticon-types';
 
 export const setCurrentLocale = (data) => (dispatch) => {
   dispatch({

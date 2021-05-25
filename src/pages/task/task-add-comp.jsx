@@ -1,6 +1,6 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 
-import { addTask } from 'Store/actions/TaskAction';
+import { addTask } from 'Store/actions/task-action';
 
 import { Button } from 'antd';
 import { connect } from 'react-redux';
@@ -22,7 +22,7 @@ class AddTaskComp extends Component {
 
   render() {
     return (
-      <div className="task-add">
+      <div className="task-page__wrapper--add">
         <input
           type="text"
           onChange={(e) => this.updateTitle(e.target.value)}
@@ -30,7 +30,7 @@ class AddTaskComp extends Component {
         />
 
         <Button type="warn" onClick={this.handleAddTask}>
-          Add
+          Add Task
         </Button>
       </div>
     );

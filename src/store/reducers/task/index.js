@@ -4,67 +4,94 @@ import {
   TASK_INVALID_ITEM,
   // TASK_COMPLETE_ITEM,
   TASK_SET_FILTER,
-} from '../../CoreActionTypes';
+} from '../../core-acticon-types';
 
-export const TASK_STATUS_INIT = 'create';
-export const TASK_STATUS_INVALID = 'invalid';
-export const TASK_STATUS_COMPLETE = 'complete';
-export const TASK_STATUS_ALL = 'all';
+import { TASK_STATUS_FILTER } from '../../core-state-consts';
+
+export const nextTaskId = (state = {}) => {
+  let currentMaxId = 0;
+  const { tasks = [] } = state;
+  if (tasks.length) {
+    currentMaxId = tasks.reduce((acc, t) => {
+      const { id = 0 } = t;
+      return id > acc ? id : acc;
+    }, currentMaxId);
+  }
+
+  return ++currentMaxId;
+};
 
 export default function reducerTodo(state = {}, { type, payload = {} }) {
-  const todoState = {
-    taskFilter: TASK_STATUS_ALL,
+  const taskState = {
+    taskFilter: TASK_STATUS_FILTER.ALL,
     tasks: [],
     ...state,
   };
 
-  const { title, status = TASK_STATUS_INIT } = payload;
-  let cloneTasks = [];
+  let cloneTasks = [...taskState.tasks];
   switch (type) {
-    case TASK_ADD_ITEM:
-      return !title
-        ? todoState
-        : {
-            ...todoState,
-            tasks: todoState.tasks.push({
-              ...payload,
-              createTime: new Date(),
-              status: status,
-            }),
-          };
-    case TASK_CHANGE_ITEM_PROPS:
-      const currIndex = todoState.tasks.findIndex((t) => t.title === title);
-      if (currIndex < 0) return todoState;
-      cloneTasks = [...todoState.tasks];
-
-      cloneTasks[currIndex] = {
-        ...cloneTasks[currIndex],
-        ...payload,
-        updateTime: new Date(),
-      };
-      return {
-        ...todoState,
-        tasks: cloneTasks,
-      };
-    case TASK_INVALID_ITEM:
-      const invalidIdx = todoState.tasks.findIndex((t) => t.title === title);
-      if (invalidIdx < 0) return todoState;
-      cloneTasks = [...todoState.tasks];
-      cloneTasks[invalidIdx].status = TASK_STATUS_INVALID;
-      cloneTasks[invalidIdx].updateTime = new Date();
+    case TASK_ADD_ITEM: {
+      const { title } = payload;
+      console.log(
+        '>>>>>>>>>>>>>>>>>>>>>>>>>',
+        taskState,
+        nextTaskId(taskState)
+      );
+      if (title) {
+        cloneTasks.push({
+          id: nextTaskId(taskState),
+          ...payload,
+          status: TASK_STATUS_FILTER.INCOMPLETE,
+          created: new Date().getTime(),
+        });
+      }
 
       return {
-        ...todoState,
+        ...taskState,
         tasks: cloneTasks,
       };
+    }
+
+    case TASK_CHANGE_ITEM_PROPS: {
+      const { id, status } = payload;
+      const idx = cloneTasks.findIndex((t) => t.id === id);
+
+      if (idx >= 0) {
+        cloneTasks[idx] = { ...cloneTasks[idx], status: status };
+      }
+
+      return {
+        ...taskState,
+        tasks: [...cloneTasks],
+      };
+    }
+
+    case TASK_INVALID_ITEM: {
+      const { id } = payload;
+      const idx = cloneTasks.findIndex((t) => t.id === id);
+      if (idx >= 0) {
+        cloneTasks[idx] = {
+          ...cloneTasks[idx],
+          status: TASK_STATUS_FILTER.INVALID,
+          updated: new Date().getTime(),
+        };
+      }
+
+      return {
+        ...taskState,
+        tasks: [...cloneTasks],
+      };
+    }
+
     case TASK_SET_FILTER: {
+      const { taskFilter = TASK_STATUS_FILTER.ALL } = payload;
       return {
-        ...todoState,
-        taskFilter: payload.taskFilter,
+        ...taskState,
+        taskFilter: taskFilter,
       };
     }
 
     default:
-      return todoState;
+      return taskState;
   }
 }

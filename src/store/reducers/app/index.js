@@ -1,4 +1,4 @@
-import { APP_LOCK, APP_UNLOCK } from '../../CoreActionTypes';
+import { APP_LOCK, APP_UNLOCK } from '../../core-acticon-types';
 
 export default function reduceApp(state = {}, action) {
   const appState = {

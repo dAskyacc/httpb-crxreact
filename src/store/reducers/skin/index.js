@@ -2,7 +2,7 @@ import {
   UI_SET_DEMOTITLE,
   UI_OPEN_SIDEBAR,
   UI_CLOSE_SIDEBAR,
-} from '../../CoreActionTypes';
+} from '../../core-acticon-types';
 
 export default function reduceSkin(state = {}, { type, payload = {} }) {
   const skinState = {

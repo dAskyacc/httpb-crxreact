@@ -1,0 +1,40 @@
+.task-page {
+  display: flex;
+  flex-flow: column nowrap;
+
+  &__wrapper--add {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+}
+
+.task-list {
+  flex: 1 1 100%;
+  justify-content: center;
+  align-items: center;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item--content {
+    flex: 1 1 auto;
+    // border: 1px dashed #cd9;
+    padding: 0px 12px;
+    span {
+      padding: 0px 5px;
+      margin-left: 1em;
+    }
+  }
+
+  &__item--id {
+    min-width: 24px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 10px;
+    font-weight: 500;
+    color: crimson;
+  }
+}

@@ -10,6 +10,8 @@ import BasSrc from '../assets/images/bas_big.png';
 
 import ErrorPage from 'Pages/error';
 
+import TaskContainer from '../pages/task';
+
 const { Header, Footer, Sider, Content } = Layout;
 
 class PageLayout extends PureComponent {
@@ -38,11 +40,7 @@ class PageLayout extends PureComponent {
           </Header>
 
           <Content>
-            <ErrorPage error={this.error} />
-            <Button type="danger">YOK</Button>
-
-            <Button type="primary" icon={<SettingFilled />} />
-            <BasLogo style={{ fontSize: '2.75rem' }} />
+            <TaskContainer />
           </Content>
           <Footer>Foot</Footer>
         </Layout>
