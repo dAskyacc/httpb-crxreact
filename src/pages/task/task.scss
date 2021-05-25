@@ -38,3 +38,7 @@
     color: crimson;
   }
 }
+
+ul.task-list > li:not(:last-child) {
+  padding-bottom: 6px;
+}
