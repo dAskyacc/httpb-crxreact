@@ -28,10 +28,6 @@ const plugins = [
       libraryName: 'antd',
       libraryDirectory: 'es',
       style: true,
-      // style: function (name) {
-      //   console.log('Antd loader Importor>>>>>>>>>>>>>>>>>>>>>>', name);
-      //   return `${name}/style/index.less`;
-      // },
     },
   ],
   [
@@ -51,6 +47,16 @@ const plugins = [
     },
     '@ant-design/icons',
   ],
+  // [
+  //   'import',
+  //   {
+  //     libraryName: 'antd-mobile',
+  //     libraryDirectory: 'es6',
+  //     style: true,
+  //     // camel2DashComponentName: false,
+  //   },
+  //   'antd-mobile',
+  // ],
   'react-hot-loader/babel',
 ];
 

@@ -8,7 +8,19 @@ export default class MainLayout extends PureComponent {
      */
   };
 
-  componentDidMount() {
-    const { router } = this.props;
+  componentDidMount() {}
+
+  renderPlaceholder() {
+    return <div className="holder">Block</div>;
+  }
+
+  render() {
+    return (
+      <div className="main-container">
+        <div className="home-header">Header</div>
+        <div className="main-body">Border</div>
+        <div className="flex"></div>
+      </div>
+    );
   }
 }
