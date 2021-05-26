@@ -3,12 +3,12 @@ import React, { PureComponent } from 'react';
 import { Layout, Button, Image } from 'antd';
 import { SettingFilled } from '@ant-design/icons';
 
-import BasLogo from 'UI/widgets/logo';
+
 // import PropTypes from 'prop-types';
 
 import BasSrc from '../assets/images/bas_big.png';
 
-import ErrorPage from 'Pages/error';
+import ErrorPage from '~Pages/error';
 
 import TaskContainer from '../pages/task';
 

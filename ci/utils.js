@@ -19,8 +19,8 @@ const entryInfo = {
     // devtools: R(src, 'Devtools', 'index.js'),
     background: R(src, 'Background', 'index.js'),
     contentScript: R(src, 'ContentScript', 'index.js'),
-    'popup/popup': [R(src, 'Popup', 'index.jsx')],
-    'options/options': [R(src, 'Options', 'index.jsx')],
+    'popup/popup': [R(src, 'Popup', 'index.js')],
+    'options/options': [R(src, 'Options', 'index.js')],
     // popup: {
     //   import: R(src, 'pages', 'Popup', 'index.jsx'),
     //   filename: 'popup/popup.bundle.js',

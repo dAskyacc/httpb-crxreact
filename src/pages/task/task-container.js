@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import TaskPage from './task-page';
 
-import { setTaskFilter } from 'Store/actions/task-action';
+import { setTaskFilter } from '~Store/actions/task-action';
 
 const mapStateToProps = (state, ownProps) => {
   const { taskState = {} } = state;

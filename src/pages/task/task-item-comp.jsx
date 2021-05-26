@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 
 import { Button } from 'antd';
 
-import { TASK_STATUS_FILTER } from 'Store/core-state-consts';
+import { TASK_STATUS_FILTER } from '~Store/core-state-consts';
+import { DateFormatter } from '~/helpers/date-util';
 
 class TaskItem extends PureComponent {
   renderCompleteButton(id) {
@@ -31,7 +32,7 @@ class TaskItem extends PureComponent {
         <div className="task-list__item--content">
           <span className="task-list__item--id">{task.id}</span>
           <span>{task.title}</span>
-          <span>{task.created}</span>
+          <span>{DateFormatter(task.created)}</span>
         </div>
         {task.status === TASK_STATUS_FILTER.INCOMPLETE ? (
           <div className="task-list__item--actions">

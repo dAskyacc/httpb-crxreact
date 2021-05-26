@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { addTask } from 'Store/actions/task-action';
+import { addTask } from '~Store/actions/task-action';
 
 import { Button } from 'antd';
 import { connect } from 'react-redux';

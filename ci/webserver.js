@@ -74,6 +74,7 @@ const hmrOpts = {
   // openPage: ['options/options.html'],
   injectClient: false,
   writeToDisk: true,
+  historyApiFallback: true,
   publicPath: `http://localhost:${DEV_PORT}`,
   headers: {
     'Access-Control-Allow-Origin': '*',

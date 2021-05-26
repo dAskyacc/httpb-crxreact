@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-import ErrorPage from 'Pages/error';
+import ErrorPage from '~Pages/error';
 
 class App extends PureComponent {
   state = {};

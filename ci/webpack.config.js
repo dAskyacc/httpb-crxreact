@@ -19,16 +19,17 @@ const targetBrowser = warpperEnv.TARGET_BROWSER || 'chrome';
  */
 var alias = {
   '~': src,
-  Lib: R(src, 'libs'),
-  Assets: R(src, 'assets'),
-  Styles: join(src, 'Styles'),
-  Store: join(src, 'store'),
-  Pages: join(src, 'pages'),
-  UI: join(src, 'ui'),
-  Router: join(src, 'router'),
+  '~Log': R(src, 'lib/log'),
+  '~Lib': R(src, 'libs'),
+  '~Assets': R(src, 'assets'),
+  '~Store': join(src, 'store'),
+  '~Pages': join(src, 'pages'),
+  '~UI': join(src, 'ui'),
+  '~Widgets': join(src, 'ui/widgets'),
   'react-dom': '@hot-loader/react-dom',
 };
 const NODE_MODE = process.env.NODE_ENV || 'development';
+const DEV_DEBUG = process.env.DEV_DEBUG;
 var secretsPath = join(__dirname, '.local/secrets.' + NODE_MODE + '.js');
 
 if (fs.existsSync(secretsPath)) {
@@ -150,6 +151,9 @@ var options = {
       ]),
   },
   plugins: [
+    new webpack.DefinePlugin({
+      __DEBUG__: JSON.stringify(DEV_DEBUG),
+    }),
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin({
       verbose: true,

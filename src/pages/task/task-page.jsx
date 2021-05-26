@@ -4,7 +4,7 @@ import cx from 'classnames';
 import TaskAdd from './task-add-comp';
 import TaskItem from './task-item-comp';
 
-import { TASK_STATUS_FILTER } from 'Store/core-state-consts';
+import { TASK_STATUS_FILTER } from '~Store/core-state-consts';
 
 export default class TaskPage extends PureComponent {
   renderTaskList() {

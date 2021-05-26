@@ -18,3 +18,5 @@ Dockerfile*
 .eslintcache
 .editorconfig
 .history
+tsconfig.json
+jsconfig.json

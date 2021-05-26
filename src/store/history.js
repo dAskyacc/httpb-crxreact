@@ -1,8 +1,8 @@
 /**
  * Source Code Integrantion route with redux
  */
-import * as createHistory from 'history';
+import { createHashHistory } from 'history';
 
-const history = createHistory.createBrowserHistory();
+const hashHistory = createHashHistory();
 
-export default history;
+export default hashHistory;

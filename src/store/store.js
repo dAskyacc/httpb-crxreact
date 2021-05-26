@@ -1,9 +1,12 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
-import rootReducer from './reducers';
+import { routerMiddleware } from 'connected-react-router';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
+
+import createRootReducer from './reducers';
+import history from './history';
 
 const composeEnhancers = composeWithDevTools({
   // if need,define in here
@@ -13,12 +16,16 @@ const composeEnhancers = composeWithDevTools({
 const loggerMiddleware = createLogger({ collapsed: true });
 
 export default function configurationStore(preloadedState) {
-  const middlewares = [loggerMiddleware, thunkMiddleware];
+  const middlewares = [
+    loggerMiddleware,
+    thunkMiddleware,
+    routerMiddleware(history),
+  ];
   const middlewareEnhancer = applyMiddleware(...middlewares);
   const enhancers = [middlewareEnhancer];
 
   const store = createStore(
-    rootReducer, // connect router
+    createRootReducer(history), // connect router
     preloadedState,
     composeEnhancers(...enhancers)
   );

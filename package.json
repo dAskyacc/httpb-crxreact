@@ -8,7 +8,7 @@
   "private": false,
   "scripts": {
     "build": "cross-env TARGET_BROWSER=chrome node ci/build.js",
-    "dev": "cross-env TARGET_BROWSER=firefox node ci/webserver.js",
+    "dev": "cross-env TARGET_BROWSER=firefox DEV_DEBUG=true node ci/webserver.js",
     "serve": "lite-server -c ci/bs-config.js",
     "lint": "prettier --write **/*.{js,jsx,css,html}"
   },
@@ -19,6 +19,7 @@
     "@types/chrome": "^0.0.139",
     "@types/react-dom": "^17.0.4",
     "antd": "^4.15.6",
+    "antd-mobile": "^2.3.4",
     "classnames": "^2.3.1",
     "connected-react-router": "^6.9.1",
     "dayjs": "^1.10.4",
@@ -32,6 +33,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
+    "redux-immutable": "^4.0.0",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
