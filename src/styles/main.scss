@@ -1,0 +1,14 @@
+@import './global/reset';
+@import './global/variables';
+@import './global/utilities';
+@import './global/mixin';
+
+/* Pages Css*/
+@import '../pages/pages.scss';
+
+/* Body */
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
