@@ -6,7 +6,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
 
 import createRootReducer from './reducers';
-import history from './history';
 
 const composeEnhancers = composeWithDevTools({
   // if need,define in here
@@ -15,7 +14,7 @@ const composeEnhancers = composeWithDevTools({
 // 使用日志打印方法， collapsed让action折叠，看着舒服
 const loggerMiddleware = createLogger({ collapsed: true });
 
-export default function configurationStore(preloadedState) {
+export default function configurationStore(preloadedState, history) {
   const middlewares = [
     loggerMiddleware,
     thunkMiddleware,

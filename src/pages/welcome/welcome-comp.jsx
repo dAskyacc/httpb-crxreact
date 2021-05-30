@@ -12,7 +12,7 @@ export default class Welcome extends PureComponent {
   render() {
     return (
       <div className="welcome-page__wrapper">
-        <div className="welcome-page"></div>
+        <div className="welcome-page">Hello Welcome</div>
       </div>
     );
   }

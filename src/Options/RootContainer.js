@@ -8,11 +8,11 @@ import configureStore from '../store/store';
 import initialAppState from '../store/initialState';
 
 import Layout from './AppLayout';
-import history from '../store/history';
-import log from '~Log';
 
-const store = configureStore(initialAppState);
-log.debug('>>>>>>Log>>>>>', store.getState());
+import { browserHistory as history } from '../store/history';
+
+
+const store = configureStore(initialAppState, history);
 
 class Root extends Component {
   render() {

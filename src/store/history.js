@@ -1,8 +1,14 @@
 /**
  * Source Code Integrantion route with redux
  */
-import { createHashHistory } from 'history';
+import {
+  createHashHistory,
+  createBrowserHistory,
+  createMemoryHistory,
+} from 'history';
 
-const hashHistory = createHashHistory();
+export const hashHistory = createHashHistory();
+export const browserHistory = createBrowserHistory();
+export const memoryHistory = createMemoryHistory();
 
-export default hashHistory;
+export default createHashHistory();
