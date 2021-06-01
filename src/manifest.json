@@ -8,10 +8,10 @@
     },
     "action": {
         "default_popup": "popup.html",
-        "default_icon": "icons/bas-active-38.png"
+        "default_icon": "icons/brave-active-128.png"
     },
     "icons": {
-        "128": "icons/bas-active-128.png"
+        "128": "icons/brave-active-128.png"
     },
     "web_accessible_resources": [
         {

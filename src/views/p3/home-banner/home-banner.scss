@@ -11,8 +11,8 @@
       to bottom,
       rgba(192, 192, 192, 0.7) 0%,
       rgba(211, 211, 211, 0.7) 18%,
-      rgba(211, 211, 211, 0.65) 35%,
-      rgba(255, 255, 255, 1) 35%,
+      rgba(211, 211, 211, 0.65) 32%,
+      rgba(255, 255, 255, 1) 32%,
       rgba(255, 255, 255, 1) 100%
     );
 
@@ -20,14 +20,31 @@
   }
 
   &__brave--name {
+    color: $primary-color;
     font-size: 1.75rem;
   }
 
+  &__logo--wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+
+    .network--wrapper {
+      position: fixed;
+      right: 0;
+      top: 58px;
+      text-align: center;
+      padding: 4px 8px;
+    }
+  }
+
   &__logo {
-    padding: 10px 0px;
+    padding: 2px 0px;
     .brave-avatar {
       background: #fff;
-      padding: 6px;
+      padding: 2px;
     }
   }
 
@@ -37,7 +54,8 @@
     text-align: center;
 
     .address-switch-icon {
-      font-size: 22px;
+      cursor: pointer;
+      font-size: 16px;
       padding-left: 12px;
       font-weight: 600;
     }
@@ -61,6 +79,7 @@
       text-align: center;
     }
     .asset-logo {
+      cursor: pointer;
       font-size: 28px;
     }
 
