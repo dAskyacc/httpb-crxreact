@@ -9,8 +9,7 @@ import initialAppState from '../store/initialState';
 
 import Layout from './AppLayout';
 
-import { browserHistory as history } from '../store/history';
-
+import { browserHistory as history } from '../router/history';
 
 const store = configureStore(initialAppState, history);
 

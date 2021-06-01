@@ -1,5 +1,22 @@
 export const APP_LOCK = 'app/lock';
+
+/**
+ * @deprecated Brave lock
+ */
 export const APP_UNLOCK = 'app/unlock';
+
+/** Brave troops */
+export const LOCK_BRAVE_TROOPS = 'brave/locked';
+export const UNLOCK_BRAVE_TROOPS = 'brave/unlock';
+
+export const UNLOCK_IN_PROGRESS = 'brave/unlock_in_progress';
+export const UNLOCK_FAILED = 'brave/unlock_failed';
+export const UNLOCK_SUCCESS = 'brave/unlock_success';
+
+/** INIT */
+export const UPD_BRAVE_STATE = 'brave/update_all';
+export const SETUP_COMPLETED = 'brave/setup/completed';
+export const SET_BRAVE_ACC_ENABLE = 'brave/account/enabled';
 
 /** skin state operation */
 export const UI_OPEN_SIDEBAR = 'ui/sidebar/open';

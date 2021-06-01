@@ -3,8 +3,9 @@
 @import './global/utilities';
 @import './global/mixin';
 
-/* Pages Css*/
-@import '../pages/pages.scss';
+/* Pages & widgets Css*/
+@import '../ui/widgets/widgets.scss';
+@import '../views/p3/p3.scss';
 
 /* Body */
 body,

@@ -23,6 +23,7 @@ var alias = {
   '~Lib': R(src, 'libs'),
   '~Assets': R(src, 'assets'),
   '~Store': join(src, 'store'),
+  '~P3': join(src, 'views/p3'),
   '~Pages': join(src, 'pages'),
   '~UI': join(src, 'ui'),
   '~Widgets': join(src, 'ui/widgets'),

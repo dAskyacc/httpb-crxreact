@@ -1,0 +1,97 @@
+.home-banner {
+  &__wrapper {
+    width: 100%;
+    height: 278px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+      to bottom,
+      rgba(192, 192, 192, 0.7) 0%,
+      rgba(211, 211, 211, 0.7) 18%,
+      rgba(211, 211, 211, 0.65) 35%,
+      rgba(255, 255, 255, 1) 35%,
+      rgba(255, 255, 255, 1) 100%
+    );
+
+    border-bottom: 1px solid rgba(220, 220, 220);
+  }
+
+  &__brave--name {
+    font-size: 1.75rem;
+  }
+
+  &__logo {
+    padding: 10px 0px;
+    .brave-avatar {
+      background: #fff;
+      padding: 6px;
+    }
+  }
+
+  &__selected {
+    font-size: 1.05rem;
+    color: $text-address;
+    text-align: center;
+
+    .address-switch-icon {
+      font-size: 22px;
+      padding-left: 12px;
+      font-weight: 600;
+    }
+  }
+
+  &__asset {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    flex: 1 1 auto;
+
+    justify-content: center;
+    align-items: center;
+
+    &--box {
+      flex-flow: column nowrap;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 0 0 20%;
+      text-align: center;
+    }
+    .asset-logo {
+      font-size: 28px;
+    }
+
+    .asset-balance {
+      padding: 0px 6px;
+      font-size: 14px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &__footbar {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+
+    .footbar-left-fill {
+      flex: 1 1 80%;
+    }
+
+    .icon-grounp {
+      flex: 0 0 auto;
+      padding: 0 4px;
+      //   border: 1px dashed #ccc;
+    }
+
+    .icon-grounp > span:not(:first-child) {
+      margin-left: 4px;
+    }
+  }
+}

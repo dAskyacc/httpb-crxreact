@@ -1,5 +1,11 @@
 import React, { PureComponent } from 'react';
 
+import { Layout } from 'antd';
+
+import RootRoutes from '../router';
+
+const { Content } = Layout;
+
 export default class MainLayout extends PureComponent {
   state = {
     /**
@@ -16,11 +22,10 @@ export default class MainLayout extends PureComponent {
 
   render() {
     return (
-      <div className="main-container">
-        <div className="home-header">Header</div>
-        <div className="main-body">Border</div>
-        <div className="flex"></div>
-      </div>
+      <Layout className="main-container">
+        <Content className="main-body">Border</Content>
+        <RootRoutes />
+      </Layout>
     );
   }
 }

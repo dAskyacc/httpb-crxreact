@@ -15,16 +15,18 @@
     "noEmit": false,
     "jsx": "react",
     "baseUrl": "./",
+    "outDir": "/dist",
     "paths": {
       "~/*": ["src/*"],
       "~Assets/*":["src/assets/*"],
       "~Lib/*": ["src/lib/*"],
       "~Pages/*": ["src/pages/*"],
-      "~Store":["src/store/*"],
-      "~UI":["src/ui/*"],
-      "~Widgets":["src/ui/widgets/*"]
+      "~P3/*": ["src/views/p3/*"],
+      "~Store/*":["src/store/*"],
+      "~UI/*":["src/ui/*"],
+      "~Widgets/*":["src/ui/widgets/*"]
     }
   },
-  "include": ["./src", "ci/themes"],
+  "include": ["./src"],
   "exclude": ["dist", "node_modules", "**/*.spec.ts"]
 }

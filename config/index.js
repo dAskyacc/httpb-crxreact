@@ -8,7 +8,7 @@ const pkgJson = require('../package.json');
 const path = require('path');
 
 let localeEnv = {
-  TARGET_BROWSER: 'chrome',
+  TARGET_BROWSER: process.env.TARGET_BROWSER || 'chrome',
 };
 
 !process.env.NODE_ENV && (process.env.NODE_ENV = 'development');
@@ -21,22 +21,38 @@ if (prodMode) {
 
 // const localeEnvPath = `./.env.${process.env.NODE_ENV}.js`;
 
-const localeEnvPath = path.resolve(__dirname, `.env.${process.env.NODE_ENV}.js`);
+const localeEnvPath = path.resolve(
+  __dirname,
+  `.env.${process.env.NODE_ENV}.js`
+);
 
 if (fs.existsSync(localeEnvPath)) {
   localeEnv = require(localeEnvPath);
   // console.log(`>>>fund ${localeEnvPath} locale env config file.`, JSON.stringify(localeEnv));
 } else {
-  console.log(chalk.redBright(`Unfund ${localeEnvPath} locale env config file.`));
+  console.log(
+    chalk.redBright(`Unfund ${localeEnvPath} locale env config file.`)
+  );
 }
 
 //
-let SECRETS_ENV_PATH = path.resolve(__dirname, '../../', '.localenv/crxextension');
+let SECRETS_ENV_PATH = path.resolve(
+  __dirname,
+  '../../',
+  '.localenv/crxextension'
+);
 let secretsEnv = {};
 if (fs.existsSync(path.join(SECRETS_ENV_PATH, '/secrets.env.js'))) {
   secretsEnv = require(path.join(SECRETS_ENV_PATH, '/secrets.env.js'));
 } else {
-  console.log(chalk.redBright(`Unfund ${path.join(SECRETS_ENV_PATH, '/secrets.env.js')} locale secrets config file.`));
+  console.log(
+    chalk.redBright(
+      `Unfund ${path.join(
+        SECRETS_ENV_PATH,
+        '/secrets.env.js'
+      )} locale secrets config file.`
+    )
+  );
 }
 
 const mixinProperty = (key, defaultValue = '') => {
@@ -51,6 +67,9 @@ let envWarpper = Object.assign({}, secretsEnv, localeEnv, {
   prodMode: prodMode,
 });
 
-console.log('Used Locale Env:', chalk.yellowBright(JSON.stringify(envWarpper, null, 2)));
+console.log(
+  'Used Locale Env:',
+  chalk.yellowBright(JSON.stringify(envWarpper, null, 2))
+);
 
 module.exports = envWarpper;

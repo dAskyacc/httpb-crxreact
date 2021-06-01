@@ -8,8 +8,10 @@ import configureStore from '../store/store';
 
 import MainLayout from './main-layout';
 
-import { hashHistory as history } from '../store/history';
+import { browserHistory as history } from '../router/history';
 import initialAppState from '../store/initialState';
+
+import Routes from './router';
 
 const store = configureStore(initialAppState, history);
 
@@ -17,9 +19,10 @@ const App = () => {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <Switch>
-          <MainLayout />
-        </Switch>
+        {/* <Switch> */}
+        {/* <MainLayout /> */}
+        {/* </Switch> */}
+        <Routes />
       </ConnectedRouter>
     </Provider>
   );
