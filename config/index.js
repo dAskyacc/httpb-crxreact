@@ -7,9 +7,9 @@ const fs = require('fs-extra');
 const pkgJson = require('../package.json');
 const path = require('path');
 
-let localeEnv = {
-  TARGET_BROWSER: process.env.TARGET_BROWSER || 'chrome',
-};
+const { getEnvTargetBrowser } = require('./cfg-types');
+
+let localeEnv = {};
 
 !process.env.NODE_ENV && (process.env.NODE_ENV = 'development');
 
@@ -60,15 +60,16 @@ const mixinProperty = (key, defaultValue = '') => {
 };
 
 let envWarpper = Object.assign({}, secretsEnv, localeEnv, {
+  ...localeEnv,
   APP_NAME: mixinProperty('APP_NAME', pkgJson.name),
   APP_VERSION: mixinProperty('APP_VERSION', pkgJson.version),
   APP_AUHTOR: mixinProperty('APP_AUTHOR', pkgJson.author),
-  TARGET_BROWSER: mixinProperty('TARGET_BROWSER'),
+  TARGET_BROWSER: getEnvTargetBrowser('chrome'),
   prodMode: prodMode,
 });
 
 console.log(
-  'Used Locale Env:',
+  'Used Build Env:',
   chalk.yellowBright(JSON.stringify(envWarpper, null, 2))
 );
 

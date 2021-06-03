@@ -7,10 +7,11 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "cross-env TARGET_BROWSER=chrome node ci/build.js",
+    "build": "node ci/build.js",
     "dev": "cross-env DEV_DEBUG=true node ci/webserver.js",
     "serve": "lite-server -c ci/bs-config.js",
-    "lint": "prettier --write **/*.{js,jsx,css,html}"
+    "lint": "prettier --write **/*.{js,jsx,css,html}",
+    "view-mod": "cross-env SUB_ENTRY=p3 node ci/quickdev/view-module-creator.js"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
@@ -24,6 +25,7 @@
     "connected-react-router": "^6.9.1",
     "dayjs": "^1.10.4",
     "history": "^5.0.0",
+    "lodash": "^4.17.21",
     "node-sass": "^6.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -75,6 +77,7 @@
     "less-loader": "^9.0.0",
     "lite-server": "^2.6.1",
     "mini-css-extract-plugin": "^1.6.0",
+    "node-emoji": "^1.10.0",
     "postcss": "^8.2.15",
     "postcss-loader": "^5.3.0",
     "prettier": "^2.3.0",

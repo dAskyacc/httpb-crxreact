@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-import { Avatar } from 'antd';
+import { Avatar, Divider } from 'antd';
 
 import { Menu, Dropdown } from 'antd';
 import { SettingOutlined, LockOutlined, DownOutlined } from '@ant-design/icons';
@@ -9,7 +9,7 @@ import {
   EthIcon,
   BtcIcon,
   DogeIcon,
-  AddressSwitch,
+  NetworkIcon,
   ExchageIcon,
 } from '~Widgets/svgicons';
 
@@ -27,11 +27,16 @@ export default class HomeBanner extends PureComponent {
   renderLogoContainer() {
     return (
       <div className="home-banner__logo--wrapper">
+        <div className="home-banner__logo--leftfill"></div>
         <div className="home-banner__logo">
           <Avatar className="brave-avatar" src={logoSrc} size={80} gap={10} />
         </div>
-        <div className="network--wrapper">
+        <div className="home-banner__network--wrapper">
+          {/* <div className="network-upfill"></div> */}
+          {/* <div className="network-row"> */}
           <span>Ropsten</span>
+          <NetworkIcon shape="circle" className="network-icon"/>
+          {/* </div> */}
         </div>
       </div>
     );
@@ -50,7 +55,6 @@ export default class HomeBanner extends PureComponent {
   }
 
   render() {
-    console.log('bannndnnd>>>>>', this.props);
     const { selectedAddress } = this.props;
     return (
       <div className="home-banner__wrapper">
@@ -87,6 +91,7 @@ export default class HomeBanner extends PureComponent {
             <LockOutlined style={{ cursor: 'pointer' }} />
           </div>
         </div>
+        <Divider className="brave-divider" />
       </div>
     );
   }

@@ -20,7 +20,7 @@ const targetBrowser = warpperEnv.TARGET_BROWSER || 'chrome';
 var alias = {
   '~': src,
   '~Log': R(src, 'lib/log'),
-  '~Lib': R(src, 'libs'),
+  '~Lib': R(src, 'lib'),
   '~Assets': R(src, 'assets'),
   '~Store': join(src, 'store'),
   '~P3': join(src, 'views/p3'),
@@ -47,10 +47,18 @@ const copyPlugins = [
         force: true,
         transform: function (content, path) {
           // console.log('>>>>>>>>>>>>>>>>>', warpperEnv.APP_VERSION);
+          let manifestJson = JSON.parse(content.toString());
+
+          if (process.env.NODE_ENV === 'development') {
+            manifestJson['content_security_policy'] = {
+              extension_pages: "script-src 'self'; object-src 'self';",
+            };
+          }
+
           return Buffer.from(
             JSON.stringify(
               {
-                ...JSON.parse(content.toString()),
+                ...manifestJson,
                 version: warpperEnv.APP_VERSION,
               },
               null,

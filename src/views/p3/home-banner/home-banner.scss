@@ -1,3 +1,7 @@
+$brave-avatar-size: 80;
+
+$brave-banner-background: rgb(222, 225, 230);
+
 .home-banner {
   &__wrapper {
     width: 100%;
@@ -9,14 +13,12 @@
 
     background: linear-gradient(
       to bottom,
-      rgba(192, 192, 192, 0.7) 0%,
-      rgba(211, 211, 211, 0.7) 18%,
-      rgba(211, 211, 211, 0.65) 32%,
+      rgba($brave-banner-background, 1) 1%,
+      rgba($brave-banner-background, 0.8) 15%,
+      rgba($brave-banner-background, 0.9) 31%,
       rgba(255, 255, 255, 1) 32%,
       rgba(255, 255, 255, 1) 100%
     );
-
-    border-bottom: 1px solid rgba(220, 220, 220);
   }
 
   &__brave--name {
@@ -30,21 +32,37 @@
     width: 100%;
     justify-content: center;
     align-items: flex-start;
+  }
 
-    .network--wrapper {
-      position: fixed;
-      right: 0;
-      top: 58px;
-      text-align: center;
-      padding: 4px 8px;
-    }
+  &__logo--leftfill {
+    width: 33.333333%;
+    flex: 0 0 33.333333%;
   }
 
   &__logo {
-    padding: 2px 0px;
+    // padding: 2px 0px;
+    flex: 1 1 33.33333%;
     .brave-avatar {
       background: #fff;
       padding: 2px;
+    }
+  }
+
+  &__network--wrapper {
+    cursor: pointer;
+    height: 40px;
+    flex: 0 0 33.33333%;
+    display: flex;
+    flex-direction: row;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    color: $primary-color;
+    overflow-x: hidden;
+    justify-content: space-evenly;
+
+    .network-icon {
+      font-size: 24px;
+      color: rgb(212, 35, 122);
     }
   }
 

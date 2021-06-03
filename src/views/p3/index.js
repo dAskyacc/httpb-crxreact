@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 
 import { hot } from 'react-hot-loader';
 
-import { HashRouter, Router } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import Routes from './routes';
 import { history } from '../../Popup/index';
 

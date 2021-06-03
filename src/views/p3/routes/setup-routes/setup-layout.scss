@@ -1,0 +1,22 @@
+$gutter-size: 6px;
+
+.setup-layout {
+  &__header {
+    padding: 0 $gutter-size * 4;
+  }
+
+  &__main {
+    padding: 0 $gutter-size;
+  }
+
+  &__footer {
+    padding: $gutter-size $gutter-size * 4;
+
+    .footer-container {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}

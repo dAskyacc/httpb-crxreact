@@ -52,7 +52,7 @@ if (process.env.DEBUG_CONFIG) {
 }
 
 if (process.env.NODE_ENV === 'development') {
-  config.devtool = 'cheap-module-source-map';
+  config.devtool = 'inline-source-map'; //'cheap-module-source-map';  // dev mode :cheap-module-eval-source-map
 
   config.stats = {
     // colors: '\u001b[32m',

@@ -50,4 +50,5 @@ module.exports = {
   '@alert-warning-bg-color': '#fff7db',
   '@alert-error-border-color': '#fcebea',
   '@alert-error-bg-color': '#fcebea',
+  '@layout-header-height': '40px',
 };
