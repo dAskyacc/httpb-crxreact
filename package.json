@@ -1,6 +1,6 @@
 {
   "name": "httpb-react-ext",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "BAS Chain httpb extension",
   "main": "index.js",
   "author": "lanbery",
