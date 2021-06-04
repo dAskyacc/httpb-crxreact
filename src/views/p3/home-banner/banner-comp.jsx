@@ -2,8 +2,7 @@ import React, { PureComponent } from 'react';
 
 import { Avatar, Divider } from 'antd';
 
-import { Menu, Dropdown } from 'antd';
-import { SettingOutlined, LockOutlined, DownOutlined } from '@ant-design/icons';
+import { SettingOutlined, LockOutlined } from '@ant-design/icons';
 
 import {
   EthIcon,
@@ -35,7 +34,7 @@ export default class HomeBanner extends PureComponent {
           {/* <div className="network-upfill"></div> */}
           {/* <div className="network-row"> */}
           <span>Ropsten</span>
-          <NetworkIcon shape="circle" className="network-icon"/>
+          <NetworkIcon shape="circle" className="network-icon" />
           {/* </div> */}
         </div>
       </div>

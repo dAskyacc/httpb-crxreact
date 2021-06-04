@@ -11,7 +11,7 @@
     "dev": "cross-env DEV_DEBUG=true node ci/webserver.js",
     "serve": "lite-server -c ci/bs-config.js",
     "lint": "prettier --write **/*.{js,jsx,css,html}",
-    "view-mod": "cross-env SUB_ENTRY=p3 node ci/quickdev/view-module-creator.js"
+    "mod:view": "cross-env SUB_ENTRY=p3 node ci/quickdev/view-module-creator.js"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",

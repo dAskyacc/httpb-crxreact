@@ -21,7 +21,9 @@ main()
     console.log(message);
   })
   .catch((err) => {
-    console.log(chalk.redBright('------------\nError:') + '\n' + err.message);
+    console.error(
+      chalk.redBright('♘♘♘----- ERROR -------♘♘♘') + '\n' + err.message
+    );
   });
 /** function  */
 async function main() {
@@ -32,13 +34,13 @@ async function main() {
   );
 
   const subEntryBase = process.env.SUB_ENTRY || Config.SUB_ENTRY;
-  const modName = Config.modName;
+  const { modName, modPath } = Config;
 
   const baseViewPath = R(src, Config.VIEW_BASE, subEntryBase);
 
-  const viewModPath = checkedViewMod(baseViewPath, modName);
-
   const params = modNameParser(modName, subEntryBase);
+
+  const viewModPath = checkedViewMod(baseViewPath, modPath, params);
 
   //
   createIndexFile(viewModPath, params);
@@ -61,7 +63,7 @@ function successMsg(viewModPath, params) {
 
   let msgTitle = `✨✨✨  Create view module [${modName}] success!`;
 
-  console.log('🎉🎉🎉🎉🎉✨✨✨', Config.noContainer);
+  console.log('🎉🎉🎉🎉🎉✨✨✨ noContainer >>', Config.noContainer);
   let msg =
     chalk.greenBright(msgTitle) +
     '  ✨✨✨' +
@@ -77,10 +79,28 @@ function successMsg(viewModPath, params) {
   return msg;
 }
 
-function checkedViewMod(baseView, modName) {
+function checkedViewMod(baseView, modName, params) {
+  const { compFileName, containerFileName, scssFileName } = params.view;
+
   const viewModPath = R(baseView, modName);
-  if (fs.existsSync(viewModPath) && modName === '') {
+
+  if (fs.existsSync(R(viewModPath, 'index.js'))) {
     const errMsg = `Module ${modName} already exists in ${baseView} directory. Please remove or use another MOD_NAME.`;
+    throw new Error(errMsg);
+  }
+
+  if (fs.existsSync(R(viewModPath, compFileName))) {
+    const errMsg = `Module file ${compFileName} already exists in ${baseView} directory. Please remove or use another MOD_NAME.`;
+    throw new Error(errMsg);
+  }
+
+  if (fs.existsSync(R(viewModPath, scssFileName))) {
+    const errMsg = `Module file ${scssFileName} already exists in ${baseView} directory. Please remove or use another MOD_NAME.`;
+    throw new Error(errMsg);
+  }
+
+  if (fs.existsSync(R(viewModPath, containerFileName))) {
+    const errMsg = `Module file ${containerFileName} already exists in ${baseView} directory. Please remove or use another MOD_NAME.`;
     throw new Error(errMsg);
   }
   return viewModPath;
