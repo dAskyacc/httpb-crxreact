@@ -1,3 +1,7 @@
+/**
+ * @deprecated this file will remove
+ */
+
 import {
   LOCK_BRAVE_TROOPS,
   UNLOCK_IN_PROGRESS,

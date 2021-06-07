@@ -1,0 +1,177 @@
+$brave-avatar-size: 80;
+$brave-head-title-height: 50;
+$brave-avatar-diff-h: 6;
+$brave-avatar-slogan-height: 30;
+
+$brave-banner-height: $brave-avatar-size + $brave-head-title-height +
+  $brave-avatar-slogan-height;
+$brave-banner-up-height: $brave-head-title-height + $brave-avatar-size/2 +
+  $brave-avatar-diff-h;
+
+$brave-banner-background: rgb(222, 225, 230);
+$brave-banner-bg-pos1: calc-precent(
+  $brave-banner-up-height,
+  $brave-banner-height
+);
+$brave-banner-color: $primary-color;
+$brave-banner-second-color: rgba(220, 20, 60, 0.65);
+$brave-bg-white: rgba(255, 255, 255, 1);
+
+.home-banner {
+  &__wrapper {
+    color: $brave-banner-color;
+    width: 100%;
+    height: $brave-banner-height;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $brave-banner-color;
+    background: linear-gradient(
+      to bottom,
+      rgba($brave-banner-background, 1) 1%,
+      rgba($brave-banner-background, 0.8) $brave-banner-bg-pos1/ 2,
+      rgba($brave-banner-background, 0.9) $brave-banner-bg-pos1,
+      $brave-bg-white $brave-banner-bg-pos1 + 2%,
+      $brave-bg-white 100%
+    );
+  }
+
+  &__title--container {
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row nowrap;
+    flex-grow: 0;
+    flex-shrink: 1;
+
+    h1 {
+      color: $brave-banner-color;
+      font-size: 1.75rem;
+      text-align: center;
+      line-height: 50px;
+    }
+  }
+
+  &__logo--container-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
+
+  &__logo--container-wrapper > div {
+    width: 33.333333%;
+    flex: 0 0 33.333333%;
+  }
+
+  &__logo {
+    // padding: 2px 0px;
+    flex: 1 1 33.33333%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    .brave-avatar {
+      background: #fff;
+      padding: 2px;
+    }
+  }
+
+  &__network--wrapper {
+    cursor: pointer;
+    height: $brave-avatar-size/2;
+    flex: 0 0 33.33333%;
+    display: flex;
+    flex-direction: row;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    color: $brave-banner-second-color;
+    overflow-x: hidden;
+    justify-content: space-evenly;
+
+    .network-icon {
+      font-size: 24px;
+      color: rgb(212, 35, 122);
+    }
+  }
+
+  &__slogan {
+    display: flex;
+    background-color: $brave-bg-white;
+    align-items: center;
+    justify-content: center;
+    // min-height: 80px;
+    h4 {
+      @include H4;
+      color: $brave-banner-color;
+      text-align: center;
+      text-transform: capitalize;
+    }
+  }
+
+  &__selected {
+    font-size: 1.05rem;
+    color: $text-address;
+    text-align: center;
+
+    * {
+      cursor: pointer;
+    }
+
+    .address-switch-icon {
+      font-size: 16px;
+      padding-left: 12px;
+      font-weight: 600;
+    }
+  }
+
+  &__assets--container {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+
+    .asset-box {
+      display: flex;
+      padding: 12px 0;
+      flex-flow: column nowrap;
+      flex: 1 1 33.333333%;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .asset-box > p {
+      font-size: 24px;
+      line-height: 40px;
+      cursor: pointer;
+    }
+    .asset-icon {
+      &.main {
+        font-size: 32px;
+      }
+    }
+  }
+
+  &__footbar {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+
+    .footbar-left-fill {
+      flex: 1 1 80%;
+    }
+
+    .icon-grounp {
+      flex: 0 0 auto;
+      padding: 0 4px;
+      //   border: 1px dashed #ccc;
+    }
+
+    .icon-grounp > span:not(:first-child) {
+      margin-left: 4px;
+    }
+  }
+}

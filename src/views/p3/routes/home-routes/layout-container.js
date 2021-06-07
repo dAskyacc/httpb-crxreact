@@ -5,9 +5,14 @@ import { withRouter } from 'react-router-dom';
 import HomeLayout from './home-layout';
 
 const mapStateToProps = (state) => {
+  const { braveState = {} } = state;
+
+  console.log('$Home Layout MapToPros>>>>>', state);
+  const { isUnlocked, isInitialized } = braveState;
+
   return {
-    ...state,
-    isInitialized: false,
+    isUnlocked,
+    isInitialized,
   };
 };
 

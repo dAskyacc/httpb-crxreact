@@ -1,25 +1,25 @@
 import React, { PureComponent } from 'react';
 
-export default class ListPage extends PureComponent {
+export default class PagePage extends PureComponent {
   state = {};
 
   renderHeader() {
-    return <div className="list-page__header"> list Header</div>;
+    return <div className="e404-page__header"> e404-page Header</div>;
   }
 
   renderContent() {
-    return <div className="list-page__main">Digital Assets list Content</div>;
+    return <div className="e404-page__main">e404-page Content</div>;
   }
 
   renderFooter() {
-    return <div className="list-page__footer">list Footer</div>;
+    return <div className="e404-page__footer">e404-page Footer</div>;
   }
 
   render() {
     // const { xxx } = this.props;
 
     return (
-      <div className="list-page">
+      <div className="e404-page">
         {this.renderHeader()}
         {this.renderContent()}
         {this.renderFooter()}

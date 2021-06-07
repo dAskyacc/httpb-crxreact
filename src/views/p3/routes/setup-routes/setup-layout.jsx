@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Switch, Route, Link } from 'react-router-dom';
-import { Layout } from 'antd';
+import { Layout, Button } from 'antd';
 
 import WelcomePage from '~P3/welcome';
 
@@ -22,7 +22,7 @@ export default class SetupLayout extends Component {
   renderInitRoutes() {
     return (
       <Switch>
-        <Route path="/setup" component={WelcomePage} exact />
+        <Route path="/setup" component={() => <div>Setup Index</div>} exact />
         <Route path="/setup/welcome" component={WelcomePage} />
       </Switch>
     );
@@ -35,6 +35,9 @@ export default class SetupLayout extends Component {
           <span>Footer</span>
           <span>
             <Link to="/">Home</Link>
+            <Button type="text" size="small">
+              Welcome
+            </Button>
           </span>
         </div>
       </Footer>

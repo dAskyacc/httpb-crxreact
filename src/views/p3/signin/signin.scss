@@ -1,0 +1,35 @@
+/**
+ * This file is used to define the SigninComponent style.
+ * This file must be imported into parent scss file, to take it effect.
+ * like : @import './signin/signin.scss';
+*/
+
+.signin-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  // margin: 0;
+  flex: 1 1 auto;
+  margin: auto;
+  padding: auto;
+  &__main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: $p3-layout-padding;
+
+    span.signin-pwd-input {
+      border-bottom: 1px solid #ccc;
+    }
+  }
+
+  &__footer {
+    min-height: 68px;
+    display: flex;
+    padding: $p3-layout-padding;
+    align-items: center;
+    justify-content: center;
+  }
+}

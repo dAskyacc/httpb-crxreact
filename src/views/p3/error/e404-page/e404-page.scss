@@ -1,0 +1,12 @@
+/**
+ * This file is used to define the PagePage style.
+ * This file must be imported into parent scss file, to take it effect.
+ * like : @import './e404-page/e404-page.scss';
+*/
+.e404-page {
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+}

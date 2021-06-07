@@ -1,0 +1,8 @@
+$brave-banner-background: rgb(222, 225, 230);
+$brave-banner-color: rgba(220, 20, 60, 1);
+.home-layout {
+  &__banner--wrapper {
+    width: 100%;
+    // border: 1px dashed $primary-color;
+  }
+}

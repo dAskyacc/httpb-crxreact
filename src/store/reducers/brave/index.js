@@ -1,4 +1,10 @@
+/**
+ * @description this file management dom state of App
+ *  it will Synchronized to background
+ */
 import {
+  LOCK_BRAVE_TROOPS,
+  UNLOCK_SUCCESS,
   UPD_BRAVE_STATE,
   SETUP_COMPLETED,
   SET_BRAVE_ACC_ENABLE,
@@ -20,6 +26,20 @@ export default function reduceBraveTroops(state = {}, { type, payload = {} }) {
   };
 
   switch (type) {
+    case LOCK_BRAVE_TROOPS: {
+      return {
+        ...braveState,
+        ...state,
+        isUnlocked: false,
+      };
+    }
+    case UNLOCK_SUCCESS: {
+      return {
+        ...braveState,
+        ...state,
+        isUnlocked: true,
+      };
+    }
     case UPD_BRAVE_STATE:
       return { ...braveState, ...payload };
     case SETUP_COMPLETED:

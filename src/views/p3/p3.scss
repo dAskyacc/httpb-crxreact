@@ -2,9 +2,10 @@
 @import './routes/setup-routes/setup-layout.scss';
 @import './routes/home-routes/home-layout.scss';
 
+@import './signin/signin.scss';
 @import './error/error.scss';
-@import './home-banner/home-banner.scss';
 @import './home/home.scss';
+
 @import './first-setup/index.scss';
 @import './unlock/unlock-pagge.scss';
 
@@ -13,5 +14,5 @@
 /* extension antd css */
 
 .ant-divider-horizontal.brave-divider {
-  margin: 4px 0;
+  margin: 0;
 }

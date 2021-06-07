@@ -122,7 +122,7 @@ function modNameParser(modName, subEntryBase) {
       compFileName: `${coreName}-comp.jsx`, //
       containerFileName: `${coreName}-container.js`,
       scssFileName: `${mns.filter((n, i) => i < 2).join('-')}.scss`,
-      rootClassName: `${coreName}-page`,
+      rootClassName: notPage ? `${coreName}-container` : `${coreName}-page`,
     },
   };
 

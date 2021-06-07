@@ -1,0 +1,12 @@
+/**
+ * This file is used to define the TransactionsPage style.
+ * This file must be imported into parent scss file, to take it effect.
+ * like : @import './transactions/transactions.scss';
+*/
+.transactions-page {
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+}

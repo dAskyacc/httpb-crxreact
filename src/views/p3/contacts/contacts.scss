@@ -1,0 +1,12 @@
+/**
+ * This file is used to define the ContactsPage style.
+ * This file must be imported into parent scss file, to take it effect.
+ * like : @import './contacts/contacts.scss';
+*/
+.contacts-page {
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+}

@@ -1,0 +1,52 @@
+/**
+ * This file is used to define the ToolbarComponent style.
+ * This file must be imported into parent scss file, to take it effect.
+ * like : @import './home-toolbar/home-toolbar.scss';
+*/
+.home-toolbar {
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    span.anticon {
+      cursor: pointer;
+    }
+  }
+
+  &__tab--container {
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    padding-left: 4px;
+    cursor: pointer;
+
+    p {
+      line-height: 26px;
+      vertical-align: middle;
+    }
+
+    .dropdown-icon-down {
+      margin-left: 6px;
+      font-size: 12px;
+      color: $primary-color;
+    }
+  }
+
+  &__dropdown {
+    span.actived {
+      color: $primary-color;
+      font-weight: 600;
+    }
+  }
+
+  &__options-wrapper {
+    flex-flow: row nowrap;
+
+    button.toolbar-btn:hover {
+      color: $brave-banner-second-color;
+    }
+  }
+}
